@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public class CrewRepository {
-    private final String PAHT = "../resources";
     private Map<Course, List<String>> crewRepository;
 
     public void init() {
