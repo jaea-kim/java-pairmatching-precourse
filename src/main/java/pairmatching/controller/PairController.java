@@ -19,7 +19,14 @@ public class PairController {
     public void execute() {
         Function function = inputFunction();
         if (function != Function.EXIT) {
+            printInformation(function);
             //todo: 종료 외 기능 완성
+            outputView.printCourseAndLevelInformation();
+        }
+    }
+
+    private void printInformation(Function function) {
+        if (function.isWatchingOrInquiry()) {
             outputView.printCourseAndLevelInformation();
         }
     }

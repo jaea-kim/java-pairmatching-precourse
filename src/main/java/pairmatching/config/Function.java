@@ -31,4 +31,8 @@ public enum Function {
     public String getMessage() {
         return message;
     }
+
+    public boolean isWatchingOrInquiry() {
+        return this.equals(Function.MATCHING) || this.equals(Function.INQUIRY);
+    }
 }
