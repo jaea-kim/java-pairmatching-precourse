@@ -2,13 +2,22 @@ package pairmatching.repository;
 
 import pairmatching.domain.Course;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class CrewRepository {
     private Map<Course, List<String>> crewRepository;
+
+    public CrewRepository() {
+        this.crewRepository = new HashMap<>();
+        init();
+    }
 
     public void init() {
         for (Course course : Course.values()) {
@@ -21,17 +30,16 @@ public class CrewRepository {
         }
     }
 
-    public List<String> readCrewFile(String filePath) throws IOException {
+    private List<String> readCrewFile(String filePath) throws IOException {
         List<String> crewList = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(new File(filePath)))) {
-            String line = "";
+        BufferedReader br = new BufferedReader(new FileReader(new File(filePath)));
+        String line = "";
 
-            while ((line = br.readLine()) != null) {
-                crewList.add(line);
-            }
+        while ((line = br.readLine()) != null) {
+            crewList.add(line);
         }
+
         return crewList;
     }
-
 }
