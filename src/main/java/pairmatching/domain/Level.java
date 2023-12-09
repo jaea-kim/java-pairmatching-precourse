@@ -1,5 +1,7 @@
 package pairmatching.domain;
 
+import pairmatching.config.ErrorMessage;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -16,6 +18,23 @@ public enum Level {
     Level(String name, List<String> missionNames) {
         this.name = name;
         this.missionNames = missionNames;
+    }
+
+    public static Level of(String name) {
+        for (Level level : Level.values()) {
+            if (level.name.equals(name)) {
+                return level;
+            }
+        }
+        throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT.getMessage());
+    }
+
+    public static boolean isLevelInMission(String level, String mission) {
+        return Level.valueOf(level).getMissionNames().contains(mission);
+    }
+
+    public boolean isInMission(String mission) {
+        return missionNames.contains(mission);
     }
 
     public String getName() {

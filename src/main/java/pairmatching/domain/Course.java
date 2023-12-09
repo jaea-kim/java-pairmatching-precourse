@@ -1,5 +1,7 @@
 package pairmatching.domain;
 
+import pairmatching.config.ErrorMessage;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,6 +23,15 @@ public enum Course {
                 .toList();
     }
 
+    public static Course of(String name) {
+        for (Course course : Course.values()) {
+            if (course.name.equals(name)) {
+                return course;
+            }
+        }
+        throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT.getMessage());
+    }
+
     public String getName() {
         return name;
     }
@@ -28,5 +39,4 @@ public enum Course {
     public String getFilePath() {
         return filePath;
     }
-
 }

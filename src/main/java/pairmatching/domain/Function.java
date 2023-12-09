@@ -1,22 +1,22 @@
-package pairmatching.config;
+package pairmatching.domain;
 
 public enum Function {
-    MATCHING(1, "페어 매칭"),
-    INQUIRY(2, "페어 조회"),
-    INITIALIZATION(3, "페어 초기화"),
-    EXIT(4, "종료");
+    MATCHING("1", "페어 매칭"),
+    INQUIRY("2", "페어 조회"),
+    INITIALIZATION("3", "페어 초기화"),
+    EXIT("Q", "종료");
 
-    private final int number;
+    private final String number;
     private final String message;
 
-    Function(int number, String message) {
+    Function(String number, String message) {
         this.number = number;
         this.message = message;
     }
 
-    public static Function of(int functionNumber) {
+    public static Function of(String functionNumber) {
         for (Function function : Function.values()) {
-            if (function.number == functionNumber) {
+            if (function.number.equals(functionNumber)) {
                 return function;
             }
         }
@@ -24,7 +24,7 @@ public enum Function {
         throw new IllegalArgumentException("잘못된 기능을 입력하였습니다.");
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 

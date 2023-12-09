@@ -42,4 +42,8 @@ public class CrewRepository {
 
         return crewList;
     }
+
+    public List<String> getMembersBy(Course course) {
+        return crewRepository.get(course);
+    }
 }
